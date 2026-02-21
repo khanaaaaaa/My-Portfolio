@@ -1085,7 +1085,18 @@ function initStickerBoard() {
     
     addBtn.addEventListener('click', () => {
         playSfx('click');
+        board.classList.add('open');
         showStickerModal();
+    });
+    
+    board.addEventListener('click', () => {
+        board.classList.add('open');
+    });
+    
+    document.addEventListener('click', (e) => {
+        if (!board.contains(e.target) && !addBtn.contains(e.target)) {
+            board.classList.remove('open');
+        }
     });
 }
 

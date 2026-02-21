@@ -600,18 +600,42 @@ body.theme-night .toast {
 .sticker-board {
     position: fixed;
     top: 70px;
-    right: 20px;
+    right: -260px;
     width: 280px;
     height: 400px;
     background: rgba(255,250,253,0.95);
     border: 3px solid var(--pink-300);
-    border-radius: 20px;
+    border-radius: 20px 0 0 20px;
     padding: 40px 15px 15px 15px;
     overflow-y: auto;
     z-index: 500;
     box-shadow: 0 10px 30px rgba(255,105,180,0.3);
     backdrop-filter: blur(5px);
     display: block !important;
+    transition: right 0.3s ease;
+}
+
+.sticker-board:hover,
+.sticker-board.open {
+    right: 0;
+}
+
+.sticker-board::after {
+    content: "📝";
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    width: 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px 0 0 10px;
+    cursor: pointer;
+    font-size: 20px;
 }
 
 @media (max-width: 768px) {
@@ -622,6 +646,10 @@ body.theme-night .toast {
         left: 10px;
         width: auto;
         height: 200px;
+        border-radius: 20px;
+    }
+    .sticker-board::after {
+        display: none;
     }
 }
 
