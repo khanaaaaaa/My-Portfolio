@@ -640,16 +640,16 @@ body.theme-night .toast {
 
 @media (max-width: 768px) {
     .sticker-board {
-        top: auto;
-        bottom: 80px;
-        right: 10px;
-        left: 10px;
-        width: auto;
-        height: 200px;
-        border-radius: 20px;
+        top: 70px;
+        bottom: auto;
+        right: -260px;
+        left: auto;
+        width: 280px;
+        height: 400px;
+        border-radius: 20px 0 0 20px;
     }
     .sticker-board::after {
-        display: none;
+        display: flex;
     }
 }
 
