@@ -1240,7 +1240,8 @@ function showStickerModal() {
                     name,
                     note,
                     date: Date.now()
-                }).then(() => {
+                }).then((ref) => {
+                    console.log('Sticker added with ID:', ref.key);
                     showToast('Sticker added!');
                     playSfx('advance');
                     document.getElementById('sticker-note').value = '';
@@ -1249,8 +1250,8 @@ function showStickerModal() {
                     modal.querySelector('.emoji-btn').classList.add('selected');
                     selectedEmoji = 'stickers/sticker1.png';
                 }).catch((error) => {
-                    showToast('Error: ' + error.message);
                     console.error('Firebase error:', error);
+                    showToast('Error: ' + error.message);
                 });
             } else {
                 showToast('Database not connected');
