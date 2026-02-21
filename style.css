@@ -723,7 +723,9 @@ body.theme-night .toast {
 @media (max-width: 768px) {
     .sticker-board {
         width: 250px;
-        height: 300px;
+        height: 250px;
+        top: auto;
+        bottom: 70px;
         right: -230px;
         border-radius: 20px 0 0 20px;
         transition: right 0.3s ease;
@@ -765,11 +767,13 @@ body.theme-night .toast {
     }
     
     .dialogue-box {
-        bottom: 20px;
+        bottom: 80px;
         left: 10px;
         right: 10px;
         width: auto;
         padding: 15px;
+        max-height: 200px;
+        overflow-y: auto;
     }
     
     .dialogue-text {
@@ -792,6 +796,14 @@ body.theme-night .toast {
     .topbar-btn {
         padding: 6px 10px;
         font-size: 12px;
+    }
+    
+    .character-container {
+        bottom: 320px;
+    }
+    
+    .character-container img {
+        height: 300px;
     }
 }
 
