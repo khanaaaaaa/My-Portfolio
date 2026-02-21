@@ -1,9 +1,9 @@
 // Firebase Configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDLhKEz8vR7qX9wJ3nF5mP2tY6uI8oA4cB",
-    authDomain: "portfolio-stickers.firebaseapp.com",
-    databaseURL: "https://portfolio-stickers-default-rtdb.firebaseio.com",
-    projectId: "portfolio-stickers"
+    authDomain: "my-portfolio-5f4a3.firebaseapp.com",
+    databaseURL: "https://my-portfolio-5f4a3-default-rtdb.firebaseio.com",
+    projectId: "my-portfolio-5f4a3"
 };
 
 try {
