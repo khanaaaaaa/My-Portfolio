@@ -722,9 +722,32 @@ body.theme-night .toast {
 
 @media (max-width: 768px) {
     .sticker-board {
-        width: 90%;
-        max-width: 280px;
+        width: 250px;
         height: 300px;
+        right: -230px;
+        border-radius: 20px 0 0 20px;
+        transition: right 0.3s ease;
+    }
+    
+    .sticker-board.open {
+        right: 0;
+    }
+    
+    .sticker-board::after {
+        content: "📝";
+        position: absolute;
+        left: -40px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 60px;
+        background: linear-gradient(135deg, #ff69b4, #ff1493);
+        border-radius: 10px 0 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        cursor: pointer;
     }
     
     .add-sticker-btn {

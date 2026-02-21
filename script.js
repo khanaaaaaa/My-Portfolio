@@ -1090,6 +1090,8 @@ function initStickerBoard() {
         const isTitle = e.target.closest('.sticker-board-title');
         if (!isTitle) return;
         
+        if (window.innerWidth <= 768) return;
+        
         isDragging = true;
         board.classList.add('dragging');
         
@@ -1133,8 +1135,17 @@ function initStickerBoard() {
     document.addEventListener('mouseup', endDrag);
     document.addEventListener('touchend', endDrag);
     
+    board.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && e.target === board) {
+            board.classList.toggle('open');
+        }
+    });
+    
     addBtn.addEventListener('click', () => {
         playSfx('click');
+        if (window.innerWidth <= 768) {
+            board.classList.add('open');
+        }
         showStickerModal();
     });
 }
