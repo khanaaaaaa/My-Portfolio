@@ -642,14 +642,18 @@ body.theme-night .toast {
     .sticker-board {
         top: 70px;
         bottom: auto;
-        right: -260px;
+        right: -240px;
         left: auto;
-        width: 280px;
-        height: 400px;
+        width: 260px;
+        height: 350px;
         border-radius: 20px 0 0 20px;
     }
     .sticker-board::after {
         display: flex;
+        left: -35px;
+        width: 35px;
+        height: 50px;
+        font-size: 18px;
     }
 }
 
