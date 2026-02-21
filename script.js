@@ -1,3 +1,18 @@
+// Firebase Configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDLhKEz8vR7qX9wJ3nF5mP2tY6uI8oA4cB",
+    authDomain: "portfolio-stickers.firebaseapp.com",
+    databaseURL: "https://portfolio-stickers-default-rtdb.firebaseio.com",
+    projectId: "portfolio-stickers"
+};
+
+try {
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.database();
+} catch(e) {
+    console.error('Firebase init failed:', e);
+}
+
 // Extend dialogue with branch intro and route nodes
 const dialogueData = {
     menu_intro: {
@@ -1076,18 +1091,24 @@ function initStickerBoard() {
 
 function loadStickers() {
     const board = document.getElementById('sticker-board');
-    const stickers = JSON.parse(localStorage.getItem('visitor_stickers') || '[]');
-    
-    board.innerHTML = '';
-    stickers.slice(-20).reverse().forEach(sticker => {
-        const item = document.createElement('div');
-        item.className = 'sticker-item';
-        item.innerHTML = `
-            <img src="${sticker.emoji}" alt="sticker" class="sticker-emoji" onerror="this.style.display='none'">
-            <div class="sticker-note">${escapeHtml(sticker.note)}</div>
-            <div class="sticker-name">~ ${escapeHtml(sticker.name)}</div>
-        `;
-        board.appendChild(item);
+    if (!db) {
+        board.innerHTML = '<div style="padding:10px;color:#c2185b;">Stickers unavailable</div>';
+        return;
+    }
+    db.ref('stickers').limitToLast(20).on('value', (snapshot) => {
+        board.innerHTML = '';
+        const stickers = [];
+        snapshot.forEach(child => stickers.push(child.val()));
+        stickers.reverse().forEach(sticker => {
+            const item = document.createElement('div');
+            item.className = 'sticker-item';
+            item.innerHTML = `
+                <img src="${sticker.emoji}" alt="sticker" class="sticker-emoji" onerror="this.style.display='none'">
+                <div class="sticker-note">${escapeHtml(sticker.note)}</div>
+                <div class="sticker-name">~ ${escapeHtml(sticker.name)}</div>
+            `;
+            board.appendChild(item);
+        });
     });
 }
 
@@ -1139,15 +1160,19 @@ function showStickerModal() {
     });
     
     modal.querySelector('.sticker-submit').addEventListener('click', () => {
-        const nameInput = document.getElementById('sticker-name'); const name = nameInput ? nameInput.value.trim() || 'Anonymous' : (state.player.name || 'Anonymous');
+        const nameInput = document.getElementById('sticker-name');
+        const name = nameInput ? nameInput.value.trim() || 'Anonymous' : (state.player.name || 'Anonymous');
         const note = document.getElementById('sticker-note').value.trim();
         
         if (note) {
-            const stickers = JSON.parse(localStorage.getItem('visitor_stickers') || '[]');
-            stickers.push({ emoji: selectedEmoji, name, note, date: Date.now() });
-            localStorage.setItem('visitor_stickers', JSON.stringify(stickers));
-            
-            loadStickers();
+            if (db) {
+                db.ref('stickers').push({
+                    emoji: selectedEmoji,
+                    name,
+                    note,
+                    date: Date.now()
+                });
+            }
             showToast('Sticker added');
             playSfx('advance');
             modal.remove();
