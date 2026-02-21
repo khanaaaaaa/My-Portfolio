@@ -1086,51 +1086,33 @@ function initStickerBoard() {
     let isDragging = false;
     let currentX, currentY, initialX, initialY;
     
-    const startDrag = (e) => {
+    board.addEventListener('mousedown', (e) => {
         if (e.target.closest('.sticker-item')) return;
         
         isDragging = true;
         board.classList.add('dragging');
-        
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        
-        initialX = clientX - board.offsetLeft;
-        initialY = clientY - board.offsetTop;
+        initialX = e.clientX - board.offsetLeft;
+        initialY = e.clientY - board.offsetTop;
         e.preventDefault();
-    };
+    });
     
-    const moveDrag = (e) => {
+    document.addEventListener('mousemove', (e) => {
         if (isDragging) {
             e.preventDefault();
-            
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            
-            currentX = clientX - initialX;
-            currentY = clientY - initialY;
+            currentX = e.clientX - initialX;
+            currentY = e.clientY - initialY;
             board.style.left = currentX + 'px';
             board.style.top = currentY + 'px';
             board.style.right = 'auto';
-            board.style.bottom = 'auto';
         }
-    };
+    });
     
-    const endDrag = () => {
+    document.addEventListener('mouseup', () => {
         if (isDragging) {
             isDragging = false;
             board.classList.remove('dragging');
         }
-    };
-    
-    board.addEventListener('mousedown', startDrag);
-    board.addEventListener('touchstart', startDrag, { passive: false });
-    
-    document.addEventListener('mousemove', moveDrag);
-    document.addEventListener('touchmove', moveDrag, { passive: false });
-    
-    document.addEventListener('mouseup', endDrag);
-    document.addEventListener('touchend', endDrag);
+    });
     
     addBtn.addEventListener('click', () => {
         playSfx('click');
