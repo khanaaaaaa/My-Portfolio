@@ -613,14 +613,12 @@ body.theme-night .toast {
     backdrop-filter: blur(5px);
     display: block !important;
     cursor: move;
-    touch-action: none;
 }
 
 .sticker-container {
     padding: 45px 15px 15px 15px;
     height: 100%;
     overflow-y: auto;
-    touch-action: pan-y;
 }
 
 .sticker-container::-webkit-scrollbar {
@@ -670,8 +668,10 @@ body.theme-night .toast {
     font-size: 14px;
     font-weight: 600;
     font-family: 'Fredoka', 'Quicksand', sans-serif;
-    pointer-events: none;
+    pointer-events: auto;
     z-index: 5;
+    cursor: move;
+    touch-action: none;
 }
 
 @keyframes stickerPop {

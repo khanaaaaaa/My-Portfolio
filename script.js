@@ -1087,7 +1087,8 @@ function initStickerBoard() {
     let currentX, currentY, initialX, initialY;
     
     const startDrag = (e) => {
-        if (e.target.closest('.sticker-item') || e.target.closest('.sticker-container')) return;
+        const isTitle = e.target.closest('.sticker-board-title');
+        if (!isTitle) return;
         
         isDragging = true;
         board.classList.add('dragging');
