@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My World</title>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar" aria-label="Controls">
+        <div class="topbar-inner">
+            <div class="brand">Pasta's World</div>
+            <div class="controls">
+                <button id="toggle-sfx" class="topbar-btn" aria-pressed="false" aria-label="Toggle sound effects">SFX: On</button>
+                <div class="divider" role="separator" aria-orientation="vertical"></div>
+                <button id="toggle-theme" class="topbar-btn" aria-pressed="false" aria-label="Toggle theme">Theme: Day</button>
+            </div>
+        </div>
+    </header>
+    <div id="start-screen" class="start-screen" aria-label="Start menu">
+        <div class="start-card">
+            <div class="title">Welcome‧₊˚ ⋅</div>
+            <button id="btn-new-game" class="menu-btn">New Game</button>
+            <button id="btn-continue" class="menu-btn">Continue</button>
+        </div>
+    </div>
+
+    <aside id="profile-panel" class="profile-panel" aria-live="polite">
+        <div class="profile-name" id="profile-name">You</div>
+        <div class="profile-stats">
+            <div>Tech: <span id="stat-tech">0</span></div>
+            <div>Creative: <span id="stat-creative">0</span></div>
+            <div>Leadership: <span id="stat-leadership">0</span></div>
+            <div>Route: <span id="profile-route">None</span></div>
+        </div>
+    </aside>
+
+
+
+    <div class="game-container">
+        <div id="sticker-board" class="sticker-board"></div>
+        <button id="add-sticker-btn" class="add-sticker-btn" title="Leave a sticker!">Leave a Sticker</button>
+        <div class="character-container">
+            <img id="character-sprite" src="character-neutral.png" alt="Character">
+        </div>
+        
+        <div class="dialogue-box">
+            <div class="name-tag" id="name-tag">???</div>
+            <div class="dialogue-text" id="dialogue-text"></div>
+            <div class="continue-indicator" id="continue">▼</div>
+        </div>
+
+        <div class="choices" id="choices"></div>
+    </div>
+
+    <div class="background" id="background"></div>
+    <div id="transition-layer" class="transition-layer" aria-hidden="true"></div>
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

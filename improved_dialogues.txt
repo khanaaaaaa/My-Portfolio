@@ -1,0 +1,93 @@
+// IMPROVED DIALOGUES - Replace in your script.js
+
+// CONTACT SECTION - Best place for your socials!
+contact_intro: {
+    character: "Pasta",
+    sprite: "character-happy.png",
+    background: "magical",
+    text: "I'd love to hear from you! 💌 Whether you want to collaborate, chat about projects, or just say hi~ Let's connect!",
+    next: "contact_details"
+},
+contact_details: {
+    character: "Pasta",
+    sprite: "character-neutral.png",
+    background: "default",
+    text: "📧 Email: your.email@example.com\n💼 LinkedIn: linkedin.com/in/yourprofile\n💻 GitHub: github.com/yourusername\n🎨 Portfolio: yourwebsite.com\n🐦 Twitter: @yourhandle\n\nFeel free to reach out anytime! I'm always excited to connect with fellow creators~ ✨",
+    next: "contact_choice"
+},
+
+// PROJECTS - More context
+projects_intro: {
+    character: "Pasta",
+    sprite: "character-happy.png",
+    background: "night",
+    text: "Ooh, my projects! 💫 Each one is like a little spell I've woven with code, creativity, and lots of love! ✨ Let me show you what I've been building~",
+    next: "projects_list"
+},
+projects_list: {
+    character: "Pasta",
+    sprite: "character-neutral.png",
+    background: "night",
+    text: "From interactive web experiences to full-stack applications~ 🎨💻 I love creating tools that solve real problems while bringing joy to users! Every line of code is a chance to make someone's day a little brighter. ✨\n\nWhat drives me? The magic moment when an idea becomes reality and actually helps people! 🚀",
+    next: "projects_choice"
+},
+
+// SKILLS - More personality
+skills_intro: {
+    character: "Pasta",
+    sprite: "character-neutral.png",
+    background: "school",
+    text: "My tech stack? 💻✨ I work with JavaScript, React, Node.js, Python, and more! But honestly, I'm always learning new things~ Technology evolves so fast, and I love keeping up with it!",
+    next: "skills_details"
+},
+skills_details: {
+    character: "Pasta",
+    sprite: "character-happy.png",
+    background: "school",
+    text: "I specialize in creating immersive web experiences and full-stack development! 🎨 From beautiful frontends with React to robust backends with Node.js~ I love the entire journey of bringing ideas to life!\n\nMy approach? Clean code, user-first design, and a sprinkle of creativity! ✨",
+    next: "skills_choice"
+},
+
+// EXPERIENCES - More engaging
+x_hackathon_intro: {
+    character: "Pasta",
+    sprite: "character-happy.png",
+    background: "school",
+    text: "Oh, this was HUGE for me! 🚀 I led the youngest team selected among 35 teams nationwide (from 170+ applicants!) at the Code for Impact Hackathon by the U.S. Embassy in Nepal.\n\nImagine: coordinating development, distributing tasks, presenting our solution—all under intense time pressure! 💪 It was challenging but SO rewarding. I learned that leadership isn't about having all the answers; it's about bringing out the best in your team! ✨",
+    next: "x_hackathon_choice",
+    apply: (s) => { s.player.leadership += 2; s.player.tech += 1; }
+},
+
+x_poetry_intro: {
+    character: "Pasta",
+    sprite: "character-happy.png",
+    background: "magical",
+    text: "Poetry! 📖✨ I was one of 100 participants and one of two representatives from Dharan in an intercity poetry recitation competition (organized by White Moon Pad & Birat Medical College).\n\nStanding on that stage, sharing words with fellow young writers~ It taught me that creativity isn't just about what you make, but how you share it! 🎭 Every pause, every emphasis, every breath—they all carry meaning. That experience shaped how I think about user experience in tech too! 💫",
+    next: "x_poetry_choice",
+    apply: (s) => { s.player.creative += 2; }
+},
+
+x_niw_intro: {
+    character: "Pasta",
+    sprite: "character-happy.png",
+    background: "magical",
+    text: "This is my passion project! 📚💕 I founded Nepal In Words—a storytelling platform that highlights underrecognized Nepali authors through accessible, engaging content.\n\nWhy? Because amazing stories were being overlooked! 🌟 I wanted to transform these voices into narratives that spark curiosity and connection among young readers. It's about cultural preservation meets modern storytelling! Check us out: TikTok @NepalInWords ✨",
+    next: "x_niw_choice",
+    apply: (s) => { s.player.creative += 2; s.player.leadership += 1; }
+},
+
+// PERSONAL - More depth
+personal_intro: {
+    character: "Pasta",
+    sprite: "character-happy.png",
+    background: "magical",
+    text: "Beyond the code? 💭 I'm someone who believes technology should bring people together, not push them apart! I love creating experiences that feel warm, human, and genuinely helpful~",
+    next: "personal_details"
+},
+personal_details: {
+    character: "Pasta",
+    sprite: "character-neutral.png",
+    background: "magical",
+    text: "I'm inspired by anime, visual novels, and interactive storytelling! 🎮✨ (You can probably tell from this website, hehe~) I believe the best technology blurs the line between art and function, creating something that's both beautiful AND useful! 🌸\n\nThat's why I built this portfolio as a visual novel~ More fun than a boring resume, right? 😊",
+    next: "personal_choice"
+},

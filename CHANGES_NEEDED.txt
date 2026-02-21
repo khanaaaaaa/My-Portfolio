@@ -1,0 +1,27 @@
+CHANGES TO MAKE IN script.js:
+
+1. Remove intermediate route dialogues (route_tech, route_creative, route_leadership)
+   - Make route_tech_quote go directly to projects_intro
+   - Make route_creative_quote go directly to skills_intro  
+   - Make route_leadership_quote go directly to contact_intro
+
+2. Replace ALL "Mysterious Visitor" with "Pasta" in experience sections
+
+3. Improve grammar in main dialogues:
+   - "Hi! I'm Pasta" instead of "Hi, I am Pasta"
+   - "I'm glad you're here" instead of "I am glad you are here"
+   - "This portfolio is a small interactive story where you can get to know me better"
+   - "Are you up for it? Would you like to explore"
+   - "I love that!" instead of "Love that"
+   - "That's totally fair!" instead of "Totally fair"
+   - "My technical toolkit includes" instead of "My magical arsenal includes"
+   - "Each project has taught me something valuable" instead of "taught me something new"
+
+4. Add kaomoji to endings:
+   - (ᵔ◡ᵔ) for happy
+   - (˶ᵔ ᵕ ᵔ˶) for cute/blushing
+
+5. Name input already works - visitors enter their name when starting New Game
+
+The name overlay function (showNameOverlay) is already implemented and working!
+It appears when clicking "New Game" and asks "What should I call you?"
