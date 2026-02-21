@@ -621,6 +621,24 @@ body.theme-night .toast {
     overflow-y: auto;
 }
 
+.sticker-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sticker-container::-webkit-scrollbar-track {
+    background: rgba(255,182,193,0.2);
+    border-radius: 10px;
+}
+
+.sticker-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    border-radius: 10px;
+}
+
+.sticker-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ff1493, #c2185b);
+}
+
 .sticker-board.dragging {
     cursor: grabbing;
     user-select: none;

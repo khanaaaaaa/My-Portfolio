@@ -1214,7 +1214,11 @@ function showStickerModal() {
             }
             showToast('Sticker added');
             playSfx('advance');
-            modal.remove();
+            document.getElementById('sticker-note').value = '';
+            document.getElementById('sticker-name').value = '';
+            modal.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+            modal.querySelector('.emoji-btn').classList.add('selected');
+            selectedEmoji = 'stickers/sticker1.png';
         } else {
             showToast('Please write a message!');
         }
