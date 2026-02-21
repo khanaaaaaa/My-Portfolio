@@ -1152,33 +1152,30 @@ function initStickerBoard() {
 
 function loadStickers() {
     const board = document.getElementById('sticker-board');
-    const container = document.createElement('div');
-    container.className = 'sticker-container';
+    let container = board.querySelector('.sticker-container');
     
-    const existingContainer = board.querySelector('.sticker-container');
-    if (existingContainer) existingContainer.remove();
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'sticker-container';
+        board.appendChild(container);
+    }
     
     if (!db) {
         container.innerHTML = '<div style="padding:10px;color:#c2185b;">Stickers unavailable</div>';
-        board.appendChild(container);
         return;
     }
-    db.ref('stickers').limitToLast(20).on('value', (snapshot) => {
-        container.innerHTML = '';
-        const stickers = [];
-        snapshot.forEach(child => stickers.push(child.val()));
-        stickers.reverse().forEach(sticker => {
-            const item = document.createElement('div');
-            item.className = 'sticker-item';
-            item.innerHTML = `
-                <img src="${sticker.emoji}" alt="sticker" class="sticker-emoji" onerror="this.style.display='none'">
-                <div class="sticker-note">${escapeHtml(sticker.note)}</div>
-                <div class="sticker-name">~ ${escapeHtml(sticker.name)}</div>
-            `;
-            container.appendChild(item);
-        });
+    
+    db.ref('stickers').limitToLast(20).on('child_added', (snapshot) => {
+        const sticker = snapshot.val();
+        const item = document.createElement('div');
+        item.className = 'sticker-item';
+        item.innerHTML = `
+            <img src="${sticker.emoji}" alt="sticker" class="sticker-emoji" onerror="this.style.display='none'">
+            <div class="sticker-note">${escapeHtml(sticker.note)}</div>
+            <div class="sticker-name">~ ${escapeHtml(sticker.name)}</div>
+        `;
+        container.insertBefore(item, container.firstChild);
     });
-    board.appendChild(container);
 }
 
 function showStickerModal() {
@@ -1240,15 +1237,10 @@ function showStickerModal() {
                     name,
                     note,
                     date: Date.now()
-                }).then((ref) => {
-                    console.log('Sticker added with ID:', ref.key);
+                }).then(() => {
                     showToast('Sticker added!');
                     playSfx('advance');
-                    document.getElementById('sticker-note').value = '';
-                    if (nameInput) nameInput.value = '';
-                    modal.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
-                    modal.querySelector('.emoji-btn').classList.add('selected');
-                    selectedEmoji = 'stickers/sticker1.png';
+                    modal.remove();
                 }).catch((error) => {
                     console.error('Firebase error:', error);
                     showToast('Error: ' + error.message);
