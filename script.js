@@ -1083,28 +1083,50 @@ function initStickerBoard() {
     
     loadStickers();
     
-    addBtn.addEventListener('click', () => {
-        playSfx('click');
-        board.classList.add('open');
-        showStickerModal();
-    });
+    let isDragging = false;
+    let currentX, currentY, initialX, initialY;
     
-    board.addEventListener('click', (e) => {
+    board.addEventListener('mousedown', (e) => {
         const rect = board.getBoundingClientRect();
         const isCloseBtn = e.clientX > rect.right - 35 && e.clientY < rect.top + 35;
+        const isDragHandle = e.clientY < rect.top + 30;
         
         if (isCloseBtn) {
-            board.classList.remove('open');
+            board.style.display = 'none';
             playSfx('click');
-        } else if (!board.classList.contains('open')) {
-            board.classList.add('open');
+            return;
+        }
+        
+        if (isDragHandle) {
+            isDragging = true;
+            board.classList.add('dragging');
+            initialX = e.clientX - board.offsetLeft;
+            initialY = e.clientY - board.offsetTop;
         }
     });
     
-    document.addEventListener('click', (e) => {
-        if (!board.contains(e.target) && !addBtn.contains(e.target)) {
-            board.classList.remove('open');
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            e.preventDefault();
+            currentX = e.clientX - initialX;
+            currentY = e.clientY - initialY;
+            board.style.left = currentX + 'px';
+            board.style.top = currentY + 'px';
+            board.style.right = 'auto';
         }
+    });
+    
+    document.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            board.classList.remove('dragging');
+        }
+    });
+    
+    addBtn.addEventListener('click', () => {
+        playSfx('click');
+        board.style.display = 'block';
+        showStickerModal();
     });
 }
 

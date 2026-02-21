@@ -600,42 +600,42 @@ body.theme-night .toast {
 .sticker-board {
     position: fixed;
     top: 70px;
-    right: -260px;
+    right: 20px;
     width: 280px;
     height: 400px;
     background: rgba(255,250,253,0.95);
     border: 3px solid var(--pink-300);
-    border-radius: 20px 0 0 20px;
+    border-radius: 20px;
     padding: 40px 15px 15px 15px;
     overflow-y: auto;
     z-index: 500;
     box-shadow: 0 10px 30px rgba(255,105,180,0.3);
     backdrop-filter: blur(5px);
     display: block !important;
-    transition: right 0.3s ease;
+    cursor: move;
 }
 
-.sticker-board:hover,
-.sticker-board.open {
-    right: 0;
+.sticker-board.dragging {
+    cursor: grabbing;
+    user-select: none;
 }
 
 .sticker-board::after {
-    content: "📝";
+    content: "≡";
     position: absolute;
-    left: -40px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: linear-gradient(135deg, #ff69b4, #ff1493);
-    color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    background: transparent;
+    color: #c2185b;
     width: 40px;
-    height: 60px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px 0 0 10px;
-    cursor: pointer;
+    cursor: grab;
     font-size: 20px;
+    font-weight: bold;
 }
 
 .sticker-board::before {
@@ -663,19 +663,10 @@ body.theme-night .toast {
 
 @media (max-width: 768px) {
     .sticker-board {
-        top: 70px;
-        bottom: auto;
-        right: -240px;
-        left: auto;
         width: 260px;
         height: 350px;
-        border-radius: 20px 0 0 20px;
     }
     .sticker-board::after {
-        display: flex;
-        left: -35px;
-        width: 35px;
-        height: 50px;
         font-size: 18px;
     }
 }
