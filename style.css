@@ -702,11 +702,61 @@ body.theme-night .toast {
 
 @media (max-width: 768px) {
     .sticker-board {
-        width: 260px;
-        height: 350px;
+        width: 90%;
+        max-width: 280px;
+        height: 300px;
+        top: auto;
+        bottom: 80px;
+        right: 5%;
+        left: 5%;
     }
-    .sticker-board::after {
-        font-size: 18px;
+    
+    .add-sticker-btn {
+        bottom: 10px;
+        right: 10px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .profile-panel {
+        top: 60px;
+        left: 10px;
+        font-size: 12px;
+        padding: 10px 12px;
+    }
+    
+    .character-container {
+        display: none;
+    }
+    
+    .dialogue-box {
+        bottom: 20px;
+        left: 10px;
+        right: 10px;
+        width: auto;
+        padding: 15px;
+    }
+    
+    .dialogue-text {
+        font-size: 15px;
+    }
+    
+    .choice-btn {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .topbar {
+        padding: 8px 10px;
+    }
+    
+    .brand {
+        font-size: 16px;
+    }
+    
+    .topbar-btn {
+        padding: 6px 10px;
+        font-size: 12px;
     }
 }
 
