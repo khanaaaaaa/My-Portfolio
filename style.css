@@ -620,6 +620,7 @@ body.theme-night .toast {
     padding: 45px 15px 15px 15px;
     height: 100%;
     overflow-y: auto;
+    touch-action: pan-y;
 }
 
 .sticker-container::-webkit-scrollbar {
@@ -724,10 +725,6 @@ body.theme-night .toast {
         width: 90%;
         max-width: 280px;
         height: 300px;
-        top: auto;
-        bottom: 80px;
-        right: 5%;
-        left: 5%;
     }
     
     .add-sticker-btn {
@@ -742,10 +739,6 @@ body.theme-night .toast {
         left: 10px;
         font-size: 12px;
         padding: 10px 12px;
-    }
-    
-    .character-container {
-        display: none;
     }
     
     .dialogue-box {
