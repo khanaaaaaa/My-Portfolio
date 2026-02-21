@@ -1240,15 +1240,21 @@ function showStickerModal() {
                     name,
                     note,
                     date: Date.now()
+                }).then(() => {
+                    showToast('Sticker added!');
+                    playSfx('advance');
+                    document.getElementById('sticker-note').value = '';
+                    if (nameInput) nameInput.value = '';
+                    modal.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+                    modal.querySelector('.emoji-btn').classList.add('selected');
+                    selectedEmoji = 'stickers/sticker1.png';
+                }).catch((error) => {
+                    showToast('Error: ' + error.message);
+                    console.error('Firebase error:', error);
                 });
+            } else {
+                showToast('Database not connected');
             }
-            showToast('Sticker added');
-            playSfx('advance');
-            document.getElementById('sticker-note').value = '';
-            document.getElementById('sticker-name').value = '';
-            modal.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
-            modal.querySelector('.emoji-btn').classList.add('selected');
-            selectedEmoji = 'stickers/sticker1.png';
         } else {
             showToast('Please write a message!');
         }
