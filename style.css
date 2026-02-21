@@ -722,88 +722,69 @@ body.theme-night .toast {
 
 @media (max-width: 768px) {
     .sticker-board {
-        width: 250px;
-        height: 250px;
-        top: auto;
-        bottom: 70px;
-        right: -230px;
-        border-radius: 20px 0 0 20px;
-        transition: right 0.3s ease;
-    }
-    
-    .sticker-board.open {
-        right: 0;
-    }
-    
-    .sticker-board::after {
-        content: "📝";
-        position: absolute;
-        left: -40px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 40px;
-        height: 60px;
-        background: linear-gradient(135deg, #ff69b4, #ff1493);
-        border-radius: 10px 0 0 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        cursor: pointer;
+        display: none !important;
     }
     
     .add-sticker-btn {
         bottom: 10px;
         right: 10px;
-        padding: 12px 20px;
-        font-size: 14px;
+        padding: 10px 18px;
+        font-size: 13px;
     }
     
     .profile-panel {
-        top: 60px;
-        left: 10px;
-        font-size: 12px;
-        padding: 10px 12px;
+        top: 50px;
+        left: 5px;
+        font-size: 11px;
+        padding: 8px 10px;
+        max-width: 140px;
     }
     
     .dialogue-box {
-        bottom: 80px;
-        left: 10px;
-        right: 10px;
+        bottom: 60px;
+        left: 5px;
+        right: 5px;
         width: auto;
-        padding: 15px;
-        max-height: 200px;
+        padding: 12px;
+        max-height: 180px;
         overflow-y: auto;
     }
     
     .dialogue-text {
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 1.5;
     }
     
     .choice-btn {
-        padding: 12px 16px;
-        font-size: 14px;
+        padding: 10px 14px;
+        font-size: 13px;
+        margin-bottom: 8px;
     }
     
     .topbar {
-        padding: 8px 10px;
+        padding: 6px 8px;
     }
     
     .brand {
-        font-size: 16px;
+        font-size: 15px;
     }
     
     .topbar-btn {
-        padding: 6px 10px;
-        font-size: 12px;
+        padding: 5px 8px;
+        font-size: 11px;
     }
     
     .character-container {
-        bottom: 320px;
+        bottom: 260px;
     }
     
     .character-container img {
-        height: 300px;
+        height: 250px;
+    }
+    
+    .name-tag {
+        font-size: 12px;
+        padding: 4px 10px;
     }
 }
 
