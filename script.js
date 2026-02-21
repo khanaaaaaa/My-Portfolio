@@ -1080,6 +1080,7 @@ function initStart() {
 function initStickerBoard() {
     const board = document.getElementById('sticker-board');
     const addBtn = document.getElementById('add-sticker-btn');
+    const closeBtn = board.querySelector('.sticker-board-close');
     
     loadStickers();
     
@@ -1087,22 +1088,14 @@ function initStickerBoard() {
     let currentX, currentY, initialX, initialY;
     
     board.addEventListener('mousedown', (e) => {
-        const rect = board.getBoundingClientRect();
-        const isCloseBtn = e.clientX > rect.right - 35 && e.clientY < rect.top + 35;
-        const isDragHandle = e.clientY < rect.top + 30;
+        if (e.target === closeBtn) return;
+        if (e.target.closest('.sticker-item')) return;
         
-        if (isCloseBtn) {
-            board.style.display = 'none';
-            playSfx('click');
-            return;
-        }
-        
-        if (isDragHandle) {
-            isDragging = true;
-            board.classList.add('dragging');
-            initialX = e.clientX - board.offsetLeft;
-            initialY = e.clientY - board.offsetTop;
-        }
+        isDragging = true;
+        board.classList.add('dragging');
+        initialX = e.clientX - board.offsetLeft;
+        initialY = e.clientY - board.offsetTop;
+        e.preventDefault();
     });
     
     document.addEventListener('mousemove', (e) => {
@@ -1121,6 +1114,11 @@ function initStickerBoard() {
             isDragging = false;
             board.classList.remove('dragging');
         }
+    });
+    
+    closeBtn.addEventListener('click', () => {
+        board.style.display = 'none';
+        playSfx('click');
     });
     
     addBtn.addEventListener('click', () => {

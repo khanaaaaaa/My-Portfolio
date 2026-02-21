@@ -636,10 +636,25 @@ body.theme-night .toast {
     cursor: grab;
     font-size: 20px;
     font-weight: bold;
+    pointer-events: auto;
 }
 
-.sticker-board::before {
-    content: "×";
+.sticker-board-title {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Fredoka', 'Quicksand', sans-serif;
+    pointer-events: none;
+}
+
+.sticker-board-close {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -655,35 +670,11 @@ body.theme-night .toast {
     color: #c2185b;
     z-index: 10;
     transition: background 0.2s;
+    border: none;
 }
 
-.sticker-board::before:hover {
+.sticker-board-close:hover {
     background: rgba(255,105,180,0.4);
-}
-
-@media (max-width: 768px) {
-    .sticker-board {
-        width: 260px;
-        height: 350px;
-    }
-    .sticker-board::after {
-        font-size: 18px;
-    }
-}
-
-.sticker-board::before {
-    content: "Visitor Notes";
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, #ff69b4, #ff1493);
-    color: white;
-    padding: 5px 15px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: 'Fredoka', 'Quicksand', sans-serif;
 }
 
 .sticker-item {
@@ -745,11 +736,12 @@ body.theme-night .toast {
 }
 
 @media (max-width: 768px) {
-    .add-sticker-btn {
-        bottom: 10px;
-        right: 10px;
-        padding: 12px 20px;
-        font-size: 14px;
+    .sticker-board {
+        width: 260px;
+        height: 350px;
+    }
+    .sticker-board::after {
+        font-size: 18px;
     }
 }
 
