@@ -27,12 +27,33 @@
   "rules": {
     "stickers": {
       ".read": true,
-      ".write": true
+      "$stickerId": {
+        ".write": "!data.exists() && newData.exists() && newData.child('note').val().length <= 100 && newData.child('name').val().length <= 20",
+        ".validate": "newData.hasChildren(['emoji', 'name', 'note', 'date'])",
+        "emoji": {
+          ".validate": "newData.isString() && newData.val().length <= 100"
+        },
+        "name": {
+          ".validate": "newData.isString() && newData.val().length <= 20"
+        },
+        "note": {
+          ".validate": "newData.isString() && newData.val().length <= 100"
+        },
+        "date": {
+          ".validate": "newData.isNumber()"
+        }
+      }
     }
   }
 }
 ```
 3. Click "Publish"
+
+These rules:
+- Allow anyone to read stickers
+- Allow creating new stickers only (no editing/deleting)
+- Validate data structure and length limits
+- Prevent spam by blocking modifications
 
 ## Update script.js:
 Replace the firebaseConfig values at the top of script.js with your actual values from Firebase console.
