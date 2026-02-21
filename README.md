@@ -1,6 +1,6 @@
 # Interactive Portfolio
 
-A visual novel style interactive portfolio with branching dialogue paths, character sprites, and dynamic backgrounds.
+A gamified, visual novel style interactive portfolio with branching dialogue paths, character sprites, and dynamic backgrounds.
 
 **Live Demo**: https://khanaaaaaa.github.io/My-Portfolio/
 
