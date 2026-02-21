@@ -1080,7 +1080,6 @@ function initStart() {
 function initStickerBoard() {
     const board = document.getElementById('sticker-board');
     const addBtn = document.getElementById('add-sticker-btn');
-    const closeBtn = board.querySelector('.sticker-board-close');
     
     loadStickers();
     
@@ -1088,7 +1087,6 @@ function initStickerBoard() {
     let currentX, currentY, initialX, initialY;
     
     board.addEventListener('mousedown', (e) => {
-        if (e.target === closeBtn) return;
         if (e.target.closest('.sticker-item')) return;
         
         isDragging = true;
@@ -1116,26 +1114,27 @@ function initStickerBoard() {
         }
     });
     
-    closeBtn.addEventListener('click', () => {
-        board.style.display = 'none';
-        playSfx('click');
-    });
-    
     addBtn.addEventListener('click', () => {
         playSfx('click');
-        board.style.display = 'block';
         showStickerModal();
     });
 }
 
 function loadStickers() {
     const board = document.getElementById('sticker-board');
+    const container = document.createElement('div');
+    container.className = 'sticker-container';
+    
+    const existingContainer = board.querySelector('.sticker-container');
+    if (existingContainer) existingContainer.remove();
+    
     if (!db) {
-        board.innerHTML = '<div style="padding:10px;color:#c2185b;">Stickers unavailable</div>';
+        container.innerHTML = '<div style="padding:10px;color:#c2185b;">Stickers unavailable</div>';
+        board.appendChild(container);
         return;
     }
     db.ref('stickers').limitToLast(20).on('value', (snapshot) => {
-        board.innerHTML = '';
+        container.innerHTML = '';
         const stickers = [];
         snapshot.forEach(child => stickers.push(child.val()));
         stickers.reverse().forEach(sticker => {
@@ -1146,9 +1145,10 @@ function loadStickers() {
                 <div class="sticker-note">${escapeHtml(sticker.note)}</div>
                 <div class="sticker-name">~ ${escapeHtml(sticker.name)}</div>
             `;
-            board.appendChild(item);
+            container.appendChild(item);
         });
     });
+    board.appendChild(container);
 }
 
 function showStickerModal() {
