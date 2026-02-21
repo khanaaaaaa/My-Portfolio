@@ -1089,8 +1089,16 @@ function initStickerBoard() {
         showStickerModal();
     });
     
-    board.addEventListener('click', () => {
-        board.classList.add('open');
+    board.addEventListener('click', (e) => {
+        const rect = board.getBoundingClientRect();
+        const isCloseBtn = e.clientX > rect.right - 35 && e.clientY < rect.top + 35;
+        
+        if (isCloseBtn) {
+            board.classList.remove('open');
+            playSfx('click');
+        } else if (!board.classList.contains('open')) {
+            board.classList.add('open');
+        }
     });
     
     document.addEventListener('click', (e) => {

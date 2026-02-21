@@ -638,6 +638,29 @@ body.theme-night .toast {
     font-size: 20px;
 }
 
+.sticker-board::before {
+    content: "×";
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+    background: rgba(255,105,180,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #c2185b;
+    z-index: 10;
+    transition: background 0.2s;
+}
+
+.sticker-board::before:hover {
+    background: rgba(255,105,180,0.4);
+}
+
 @media (max-width: 768px) {
     .sticker-board {
         top: 70px;
