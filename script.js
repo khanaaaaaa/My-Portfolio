@@ -702,7 +702,7 @@ function ensureInjectedStyles() {
     .name-card { width: 92%; max-width: 420px; background: white; border: 2px solid var(--pink-200); border-radius: 14px; box-shadow: 0 10px 30px rgba(255,105,180,0.25); padding: 18px 20px; }
     .name-card h3 { margin: 0 0 8px 0; color: #c2185b; }
     .name-row { display: flex; gap: 8px; }
-    .name-row input { flex: 1; padding: 8px 10px; border: 2px solid var(--pink-300); border-radius: 8px; }
+    .name-row input { flex: 1; padding: 12px 14px; border: 2px solid var(--pink-300); border-radius: 8px; font-size: 15px; }
     .name-row button { padding: 8px 12px; border-radius: 8px; border: 2px solid var(--pink-300); background: var(--pink-50); cursor: pointer; }
     `;
     document.head.appendChild(style);
@@ -1117,7 +1117,7 @@ function showStickerModal() {
     });
     
     modal.querySelector('.sticker-submit').addEventListener('click', () => {
-        const name = document.getElementById('sticker-name').value.trim() || 'Anonymous';
+        const nameInput = document.getElementById('sticker-name'); const name = nameInput ? nameInput.value.trim() || 'Anonymous' : (state.player.name || 'Anonymous');
         const note = document.getElementById('sticker-note').value.trim();
         
         if (note) {
@@ -1153,6 +1153,10 @@ updateMusic();
 applyTheme();
 initStart();
 initStickerBoard();
+
+
+
+
 
 
 
