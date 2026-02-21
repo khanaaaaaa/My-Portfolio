@@ -611,6 +611,7 @@ body.theme-night .toast {
     z-index: 500;
     box-shadow: 0 10px 30px rgba(255,105,180,0.3);
     backdrop-filter: blur(5px);
+    display: block !important;
 }
 
 .sticker-board::before {

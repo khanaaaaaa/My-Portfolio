@@ -34,7 +34,29 @@ const dialogueData = {
         text: "\"Leadership is not about being in charge. It’s about taking care of those in your charge.\" — Simon Sinek",
         next: "route_leadership_path",
         apply: (s) => { s.player.leadership += 2; s.player.route = 'Leadership'; }
+    },    route_tech_path: {
+        character: "Pasta",
+        sprite: "character-happy.png",
+        background: "school",
+        text: "Let's explore the tech side of my journey.",
+        next: "experiences_hub"
     },
+    route_creative_path: {
+        character: "Pasta",
+        sprite: "character-happy.png",
+        background: "magical",
+        text: "Let's dive into the creative world.",
+        next: "experiences_hub"
+    },
+    route_leadership_path: {
+        character: "Pasta",
+        sprite: "character-neutral.png",
+        background: "school",
+        text: "Let's explore leadership experiences.",
+        next: "experiences_hub"
+    },
+
+
 
     experiences_hub: {
         character: "Pasta",
