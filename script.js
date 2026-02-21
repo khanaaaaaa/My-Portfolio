@@ -1086,33 +1086,51 @@ function initStickerBoard() {
     let isDragging = false;
     let currentX, currentY, initialX, initialY;
     
-    board.addEventListener('mousedown', (e) => {
+    const startDrag = (e) => {
         if (e.target.closest('.sticker-item')) return;
         
         isDragging = true;
         board.classList.add('dragging');
-        initialX = e.clientX - board.offsetLeft;
-        initialY = e.clientY - board.offsetTop;
+        
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        
+        initialX = clientX - board.offsetLeft;
+        initialY = clientY - board.offsetTop;
         e.preventDefault();
-    });
+    };
     
-    document.addEventListener('mousemove', (e) => {
+    const moveDrag = (e) => {
         if (isDragging) {
             e.preventDefault();
-            currentX = e.clientX - initialX;
-            currentY = e.clientY - initialY;
+            
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            
+            currentX = clientX - initialX;
+            currentY = clientY - initialY;
             board.style.left = currentX + 'px';
             board.style.top = currentY + 'px';
             board.style.right = 'auto';
+            board.style.bottom = 'auto';
         }
-    });
+    };
     
-    document.addEventListener('mouseup', () => {
+    const endDrag = () => {
         if (isDragging) {
             isDragging = false;
             board.classList.remove('dragging');
         }
-    });
+    };
+    
+    board.addEventListener('mousedown', startDrag);
+    board.addEventListener('touchstart', startDrag, { passive: false });
+    
+    document.addEventListener('mousemove', moveDrag);
+    document.addEventListener('touchmove', moveDrag, { passive: false });
+    
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
     
     addBtn.addEventListener('click', () => {
         playSfx('click');
