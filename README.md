@@ -2,6 +2,8 @@
 
 A visual novel style interactive portfolio with branching dialogue paths, character sprites, and dynamic backgrounds.
 
+**Live Demo**: https://khanaaaaaa.github.io/My-Portfolio/
+
 ## Features
 
 - **Typewriter dialogue effect** - Text appears character by character
