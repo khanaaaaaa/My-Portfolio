@@ -155,5 +155,3 @@ Simply open `index.html` in a web browser. No server required!
 - GitHub: github.com/khanaaaaaa
 
 ---
-
-**Note**: The current sprites are placeholder images. Replace them with your own character artwork for the full effect!
